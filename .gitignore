@@ -1,0 +1,64 @@
+# Compiled class file
+*.class
+# Eclipse
+.project
+.classpath
+.settings/
+# Intellij
+*.ipr
+*.iml
+*.iws
+.idea/
+# Maven
+target/
+# Gradle
+build
+.gradle
+# Log file
+*.log
+# out
+**/out/
+# BlueJ files
+*.ctxt
+
+# Mobile Tools for Java (J2ME)
+.mtj.tmp/
+
+# Package Files #
+*.jar
+*.war
+*.nar
+*.ear
+*.zip
+
+# Compiled class file
+*.class
+
+# Intellij
+*.ipr
+*.iml
+*.iws
+.idea/
+
+# Maven
+target/
+.flattened-pom.xml
+
+# Log file
+*.log
+
+# out
+**/out/
+
+# BlueJ files
+*.ctxt
+
+# Mobile Tools for Java (J2ME)
+.mtj.tmp/
+
+# Package Files #
+*.jar
+*.war
+*.nar
+*.ear
+*.zip
