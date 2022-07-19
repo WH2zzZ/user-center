@@ -1,0 +1,15 @@
+logging:
+  config: classpath:log/logback.xml
+spring:
+  application:
+    name: user-center
+  profiles:
+    active: dev
+  cloud:
+    nacos:
+      config:
+        group: ${spring.application.name}
+        server-addr: ${REGISTER_IP:127.0.0.1:8848}
+  config:
+    import:
+      - optional:nacos:${spring.application.name}.properties?group=${spring.application.name}

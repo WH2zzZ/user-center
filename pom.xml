@@ -5,25 +5,49 @@
     <modelVersion>4.0.0</modelVersion>
     <packaging>pom</packaging>
     <modules>
-        <module>user-web</module>
+        <module>user-bootstrap</module>
+        <module>user-api</module>
+        <module>user-dao</module>
     </modules>
 
     <groupId>com.oowanghan</groupId>
     <artifactId>user-center</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>${revision}</version>
 
     <properties>
-        <atlantis.vision>1.0.0-SNAPSHOT</atlantis.vision>
+        <revision>1.0-SNAPSHOT</revision>
+        <atlantis.vision>0.0.1-SNAPSHOT</atlantis.vision>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
+        <maven-flatten.version>1.1.0</maven-flatten.version>
     </properties>
 
     <dependencies>
+        <!-- 公共工具类 -->
         <dependency>
             <groupId>com.oowanghan.atlantis</groupId>
             <artifactId>atlantis-utils</artifactId>
+        </dependency>
+
+        <!-- 配置中心 -->
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
+        </dependency>
+
+        <!-- liqiubase -->
+        <dependency>
+            <groupId>org.liquibase</groupId>
+            <artifactId>liquibase-core</artifactId>
+        </dependency>
+
+        <!-- lombok -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <scope>provided</scope>
         </dependency>
     </dependencies>
 
@@ -31,11 +55,44 @@
         <dependencies>
             <dependency>
                 <groupId>com.oowanghan.atlantis</groupId>
-                <artifactId>atlantis-framework</artifactId>
+                <artifactId>atlantis-dependencies</artifactId>
                 <version>${atlantis.vision}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
         </dependencies>
     </dependencyManagement>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>flatten-maven-plugin</artifactId>
+                <version>${maven-flatten.version}</version>
+                <configuration>
+                    <updatePomFile>true</updatePomFile>
+                    <flattenMode>resolveCiFriendliesOnly</flattenMode>
+                    <pomElements>
+                        <dependencies>expand</dependencies>
+                    </pomElements>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>flatten</id>
+                        <phase>process-resources</phase>
+                        <goals>
+                            <goal>flatten</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>flatten.clean</id>
+                        <phase>clean</phase>
+                        <goals>
+                            <goal>clean</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
 </project>
