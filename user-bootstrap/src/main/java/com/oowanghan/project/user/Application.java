@@ -1,4 +1,4 @@
-package com.oowanghan.project.user.bootstrap;
+package com.oowanghan.project.user;
 
 import com.oowanghan.atlantis.util.str.StringUtil;
 import lombok.extern.slf4j.Slf4j;

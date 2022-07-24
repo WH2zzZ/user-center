@@ -15,7 +15,7 @@
         The initial schema has the '00000000000001' id, so that it is over-written if we re-generate it.
     -->
     <changeSet id="00000000000001" author="wh">
-        <sqlFile path="liqiubase/changelog/sql/01_add_user.sql"/>
+        <sqlFile path="liquibase/changelog/sql/01_add_user.sql"/>
     </changeSet>
 
 </databaseChangeLog>
