@@ -9,6 +9,7 @@
         <module>user-api</module>
         <module>user-dao</module>
         <module>user-service</module>
+        <module>user-common</module>
     </modules>
 
     <groupId>com.oowanghan</groupId>
@@ -31,6 +32,14 @@
             <groupId>com.oowanghan.atlantis</groupId>
             <artifactId>atlantis-utils</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.oowanghan.atlantis</groupId>
+            <artifactId>atlantis-framework-common</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.oowanghan.atlantis</groupId>
+            <artifactId>atlantis-framework-auth</artifactId>
+        </dependency>
 
         <!-- 配置中心 -->
         <dependency>
@@ -50,6 +59,19 @@
             <artifactId>lombok</artifactId>
             <scope>provided</scope>
         </dependency>
+
+        <!-- redis -->
+        <dependency>
+            <groupId>com.oowanghan.atlantis</groupId>
+            <artifactId>atlantis-framework-redis</artifactId>
+        </dependency>
+
+        <!-- SMS -->
+        <dependency>
+            <groupId>com.tencentcloudapi</groupId>
+            <artifactId>tencentcloud-sdk-java-sms</artifactId>
+            <version>3.1.555</version>
+        </dependency>
     </dependencies>
 
     <dependencyManagement>
@@ -60,6 +82,37 @@
                 <version>${atlantis.vision}</version>
                 <type>pom</type>
                 <scope>import</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>com.oowanghan</groupId>
+                <artifactId>user-dao</artifactId>
+                <version>${revision}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.oowanghan</groupId>
+                <artifactId>user-common</artifactId>
+                <version>${revision}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.oowanghan</groupId>
+                <artifactId>user-dao</artifactId>
+                <version>${revision}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.oowanghan</groupId>
+                <artifactId>user-api</artifactId>
+                <version>${revision}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.oowanghan</groupId>
+                <artifactId>user-dao</artifactId>
+                <version>${revision}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.oowanghan</groupId>
+                <artifactId>user-service</artifactId>
+                <version>${revision}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

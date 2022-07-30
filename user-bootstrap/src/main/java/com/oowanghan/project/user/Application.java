@@ -1,6 +1,6 @@
 package com.oowanghan.project.user;
 
-import com.oowanghan.atlantis.util.str.StringUtil;
+import cn.hutool.core.util.StrUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -28,7 +28,7 @@ public class Application {
         }
         String serverPort = env.getProperty("server.port");
         String contextPath = env.getProperty("server.servlet.context-path");
-        if (StringUtil.isBlank(contextPath)) {
+        if (StrUtil.isBlank(contextPath)) {
             contextPath = "/";
         }
         String hostAddress = "localhost";
