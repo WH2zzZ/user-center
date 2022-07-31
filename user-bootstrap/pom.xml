@@ -26,6 +26,16 @@
         </dependency>
 
         <dependency>
+            <groupId>com.oowanghan.atlantis</groupId>
+            <artifactId>atlantis-framework-web</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.oowanghan</groupId>
+            <artifactId>user-service</artifactId>
+        </dependency>
+
+        <dependency>
             <groupId>com.alibaba.cloud</groupId>
             <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
         </dependency>

@@ -2,7 +2,6 @@ package com.oowanghan.project.user.service.user;
 
 import cn.hutool.core.util.RandomUtil;
 import cn.hutool.core.util.StrUtil;
-import com.oowanghan.atlantis.framework.auth.JwtTokenCacheProcesser;
 import com.oowanghan.atlantis.framework.auth.JwtTokenProcesser;
 import com.oowanghan.atlantis.framework.auth.context.AuthContextHolder;
 import com.oowanghan.atlantis.framework.common.exception.BizErrorCode;
@@ -43,8 +42,6 @@ public class UserService {
     @Autowired
     private SmsMessageService messageService;
     @Autowired
-    private JwtTokenCacheProcesser jwtTokenCacheProcesser;
-    @Autowired
     private JwtTokenProcesser jwtTokenProcesser;
     @Autowired
     private RedissonClient redissonClient;
@@ -74,6 +71,7 @@ public class UserService {
 
     /**
      * 登陆
+     *
      * @Author WangHan
      * @Create 19:40 2022/7/30
      * @Param [request]
@@ -107,7 +105,7 @@ public class UserService {
         }
 
         UserEntity userEntity = userRepository.getByMobile(mobile);
-        jwtTokenCacheProcesser.logout(userEntity.getId(), token.substring(AUTH_HEAD.length()));
+        jwtTokenProcesser.deleteToken(userEntity.getId(), token.substring(AUTH_HEAD.length()));
     }
 
     public UserBo getUserByMobile(String mobile) {

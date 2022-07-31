@@ -20,14 +20,5 @@
 
     <dependencies>
 
-        <dependency>
-            <groupId>com.oowanghan.atlantis</groupId>
-            <artifactId>atlantis-framework-web</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>com.oowanghan</groupId>
-            <artifactId>user-service</artifactId>
-        </dependency>
     </dependencies>
 </project>

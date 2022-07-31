@@ -13,4 +13,6 @@ spring:
   config:
     import:
       - optional:nacos:${spring.application.name}.properties?group=${spring.application.name}
-      - optional:nacos:mysql.yml?group=${spring.application.name}
+      - optional:nacos:database.yml?group=${spring.application.name}
+      - optional:nacos:sms.yml?group=${spring.application.name}
+      - optional:nacos:security.yml?group=${spring.application.name}

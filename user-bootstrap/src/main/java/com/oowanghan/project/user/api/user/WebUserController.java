@@ -1,4 +1,4 @@
-package com.oowanghan.project.user.api;
+package com.oowanghan.project.user.api.user;
 
 import cn.hutool.core.util.StrUtil;
 import com.oowanghan.atlantis.framework.auth.annotation.AuthControl;
@@ -6,9 +6,9 @@ import com.oowanghan.atlantis.framework.auth.entity.AtlantisJwtClaim;
 import com.oowanghan.atlantis.framework.common.exception.BizErrorCode;
 import com.oowanghan.atlantis.framework.common.exception.BizException;
 import com.oowanghan.atlantis.framework.web.vo.BizResponse;
-import com.oowanghan.project.user.api.convert.UserAppVoConvert;
-import com.oowanghan.project.user.api.vo.UserLoginVo;
-import com.oowanghan.project.user.api.vo.UserVo;
+import com.oowanghan.project.user.api.user.convert.UserAppVoConvert;
+import com.oowanghan.project.user.api.user.vo.UserLoginVo;
+import com.oowanghan.project.user.api.user.vo.UserVo;
 import com.oowanghan.project.user.service.user.UserService;
 import com.oowanghan.project.user.service.user.bo.UserBo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +21,7 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  * 用户相关信息
+ *
  * @author wanghan
  */
 @RestController
@@ -30,7 +31,7 @@ public class WebUserController {
     @Autowired
     private UserService userService;
 
-    @PostMapping("/login/verifycode")
+    @GetMapping("/login/verifycode")
     public BizResponse<Void> getLoginVerifyCode(@RequestParam String mobile) {
         if (StrUtil.isBlank(mobile) || mobile.length() != 11) {
             throw new BizException(BizErrorCode.PARAM_ERROR, "手机号码格式错误");
@@ -58,7 +59,8 @@ public class WebUserController {
         return BizResponse.success();
     }
 
-    @PostMapping("/info")
+    @AuthControl
+    @GetMapping("/info")
     public BizResponse<UserVo> getUser(@RequestParam String mobile) {
         if (StrUtil.isBlank(mobile)) {
             throw new BizException(BizErrorCode.PARAM_ERROR);
@@ -68,16 +70,16 @@ public class WebUserController {
         return BizResponse.success(UserAppVoConvert.INSTANCE.convertUserBoToUserVo(userBo));
     }
 
-    @PostMapping("/putNickName")
+    @PutMapping("/nickname")
     @AuthControl
     public BizResponse<Void> updateNickname(@RequestParam("nickName") String nickName) {
         userService.updateNickname(nickName);
         return BizResponse.success();
     }
 
-    @PostMapping("/putHeadimage")
+    @PutMapping("/headimage")
     @AuthControl
-    public BizResponse putHeadImage(@RequestParam("imageUrl") String imageUrl) {
+    public BizResponse<Void> putHeadImage(@RequestParam("imageUrl") String imageUrl) {
         userService.updateHeadImage(imageUrl);
         return BizResponse.success();
     }

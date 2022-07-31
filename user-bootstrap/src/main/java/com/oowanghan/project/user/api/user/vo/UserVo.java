@@ -1,4 +1,4 @@
-package com.oowanghan.project.user.api.vo;
+package com.oowanghan.project.user.api.user.vo;
 
 import lombok.Data;
 
